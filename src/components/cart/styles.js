@@ -57,6 +57,9 @@ export const Lista = styled.ul`
     li > div > div > span{
         color: var(--grey-50)
     }
+    li > div > div > span:hover{
+        cursor: pointer;
+    }
 
 `
 export const CartTitle = styled.h2`
