@@ -3,7 +3,9 @@ import { api } from './services/api';
 import { CreateHeader } from './components/header';
 import { Products } from './components/products';
 import { MyCart } from './components/cart';
-
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import { GlobalStyle } from './styles/globalStyles';
 
 function App() {
   
@@ -28,15 +30,33 @@ function App() {
     const newList = currentSale.filter(item => item.id !== id)
     setCurrentSale(newList)
   }
-
+  function searchProduct(string){
+    const search = products.filter(item => item.name.toLowerCase().includes(string))
+  }
+  
   return (
     <div className="App">
-      <CreateHeader/>
+      <GlobalStyle/>
+      <CreateHeader searchProduct={searchProduct}/>
       <main>
-        <Products lista={products} currentSale={currentSale} setCurrentSale={setCurrentSale}/>
-        <MyCart meusProdutos={currentSale} removeItemFromCart={removeItemFromCart}/>
+        <Products lista={products} currentSale={currentSale} setCurrentSale={setCurrentSale} searchProduct={searchProduct} toast={toast}/>
+        <MyCart meusProdutos={currentSale} removeItemFromCart={removeItemFromCart} setCurrentSale={setCurrentSale} toast={toast}/>
       </main>
+      <ToastContainer
+        position="top-right"
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        />
+        {/* Same as */}
+      <ToastContainer />
     </div>
+    
   )
 }
 

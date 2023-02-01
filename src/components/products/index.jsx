@@ -1,28 +1,29 @@
 import { Lista } from "./styles"
 
-export function Products({lista, currentSale, setCurrentSale}){
+export function Products({lista, currentSale, setCurrentSale, toast}){
 
-    function clickEvent(event, product){
-        event.target.innerText = 'Adicionado ao carrinho'
+    function addToCart(event, product){
         setCurrentSale([...currentSale, product])
-        event.target.innerText = 'Adicionado ao carrinho'
+        toast.success(`${product.name} adicionado ao carrinho`, {autoClose: 1000})
     }
-
+    function removeFromCart(event, product){
+        setCurrentSale([...currentSale.filter(item => item !== product)])
+    }
     return(
         <Lista>
-            {
+            {   
                 lista.map(product => (
                     <li key={product.id}>
                         <img src={product.img} alt="" className="card-img" />
                         <div>
                         <h2>{product.name}</h2>
                         <span>{product.category}</span>
-                        <span>{product.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span>
+                        <h3>{product.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</h3>
                         {
                             currentSale.includes(product) ? (
-                                <button>Adicionado ao carrinho</button>
+                                <button onClick={(event) => removeFromCart(event, product)}>Remover do carrinho</button>
                             ) : (
-                                <button onClick={(event) => clickEvent(event, product)}>Adicionar</button>
+                                <button onClick={(event) => addToCart(event, product)}>Adicionar</button>
                             )
                         }
                         </div>

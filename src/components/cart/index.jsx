@@ -1,9 +1,14 @@
-import { Lista } from "./styles";
+import { Cart, CartTitle, Lista } from "./styles";
 
-export function MyCart({meusProdutos, removeItemFromCart, total}){
+export function MyCart({meusProdutos, removeItemFromCart, setCurrentSale, toast}){
+
+    function clearCart(){
+        meusProdutos.length === 0 ? (toast.warning('Seu carrinho já está vazio', {autoClose: 1000})) :
+        setCurrentSale([])
+    }
     return(
-        <div className="cart">
-            <h2 className="cart-title">Carrinho de compras</h2>
+        <Cart>
+            <CartTitle>Carrinho de compras</CartTitle>
             <Lista>
                 {   
                     meusProdutos.length === 0 ? (<h2 className="cart-empty">Seu carrinho está vazio</h2>) :
@@ -24,8 +29,11 @@ export function MyCart({meusProdutos, removeItemFromCart, total}){
                 }
             </Lista>
             <div>
-                <span>Total</span><span>{meusProdutos.reduce((acc, cur) => acc + cur.price, 0).toFixed(2)}</span>
+                <div>
+                    <h2>Total</h2><span>{meusProdutos.reduce((acc, cur) => acc + cur.price, 0).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span>
+                </div>
+                <button onClick={() => clearCart()}>Remover todos</button>
             </div>
-        </div>
+        </Cart>
     )
 }
