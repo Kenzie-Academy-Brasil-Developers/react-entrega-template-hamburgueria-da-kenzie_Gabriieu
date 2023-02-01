@@ -38,4 +38,10 @@ export const Lista = styled.ul`
         background-color: var(--primary-color);
         padding: 1rem;
     }
+    @media (min-width: 1025px){
+        flex-wrap: wrap;
+        li{
+            width: 15vw;
+        }
+    }
 `

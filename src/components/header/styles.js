@@ -5,7 +5,6 @@ export const Container = styled.header`
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    height: 12%;
     padding-top: 1.5rem;
     img{
         width: 36%;
@@ -32,5 +31,17 @@ export const Container = styled.header`
         border: none;
         border-radius: var(--btn-radius);
         color: var(--grey-0)
+    }
+    @media (min-width: 1025px){
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 2rem;
+        img{
+            height: 3rem;
+            width: 20rem;
+        }
+        >div{
+            width: 30vw;
+        }
     }
 `

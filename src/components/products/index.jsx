@@ -4,10 +4,11 @@ export function Products({lista, currentSale, setCurrentSale, toast, productsSea
 
     function addToCart(event, product){
         setCurrentSale([...currentSale, product])
-        toast.success(`${product.name} adicionado ao carrinho`, {autoClose: 1000})
+        toast.success(`${product.name} adicionado ao carrinho`, {autoClose: 500})
     }
     function removeFromCart(event, product){
         setCurrentSale([...currentSale.filter(item => item !== product)])
+        toast.success(`Removeu ${product.name}`, {autoClose: 500})
     }
     return(
         <Lista>

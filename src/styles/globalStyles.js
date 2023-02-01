@@ -2,9 +2,9 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     body {
-        margin: 0;
+        margin: 0 auto;
         padding: 0;
-        font-family: Open-Sans, Helvetica, Sans-Serif;
+        font-family: 'Open-Sans', Helvetica, Sans-Serif;
     }
     :root{
         --primary-color: #24AE60;

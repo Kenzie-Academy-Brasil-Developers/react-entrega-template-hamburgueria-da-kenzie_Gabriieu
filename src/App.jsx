@@ -31,6 +31,7 @@ function App() {
   function removeItemFromCart(id){
     const newList = currentSale.filter(item => item.id !== id)
     setCurrentSale(newList)
+    toast.success(`Removeu ${currentSale.find(item => item.id === id).name}`, {autoClose: 500})
   }
   function searchProduct(string){
     const search = products.filter(item => item.name.toLowerCase().includes(string))
@@ -56,7 +57,6 @@ function App() {
         pauseOnHover
         theme="light"
         />
-        {/* Same as */}
       <ToastContainer />
     </div>
     

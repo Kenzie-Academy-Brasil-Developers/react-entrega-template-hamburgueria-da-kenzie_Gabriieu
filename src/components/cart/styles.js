@@ -5,7 +5,7 @@ export const Cart = styled.div`
     margin: .5rem;
     padding: 1rem;
     >h2{
-        color: var(--grey-0)
+        color: var(--grey-0);
     }
     >div{
         display: flex;
@@ -60,7 +60,10 @@ export const Lista = styled.ul`
     li > div > div > span:hover{
         cursor: pointer;
     }
-
+    @media (min-width: 1025px){
+        min-width: 35vw;
+        overflow-y: scroll;
+    }
 `
 export const CartTitle = styled.h2`
     background-color: var(--primary-color);
